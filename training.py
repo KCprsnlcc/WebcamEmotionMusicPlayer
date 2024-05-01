@@ -12,8 +12,8 @@ from keras.optimizers import Adam, RMSprop, SGD
 import matplotlib.pyplot as plt
 from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 
-# Dataset Directory
-data_dir = "Datasets/train"
+# Data Directory
+data_dir = "Data/train"
 
 # Classes
 sub_folders = os.listdir(data_dir)
@@ -48,7 +48,7 @@ images = np.array(images)
 labels = np.array(labels)
 print(len(images))
 
-# Splitting Dataset into training, validation, and test sets
+# Splitting Data into training, validation, and test sets
 X_train, X_test, y_train, y_test = train_test_split(
     images, labels, test_size=0.2, random_state=42)
 
