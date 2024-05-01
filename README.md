@@ -7,7 +7,7 @@
 1. **Run the Application:**
    - Open a terminal or command prompt.
    - Navigate to the directory where the Python script is saved.
-   - Run the script using the command `python <filename>.py`.
+   - Run the script using the command `python main.py`.
 
 2. **Load Camera:**
    - Click on the "Load Camera" button to initialize the webcam.
