@@ -103,11 +103,21 @@ class WebcamEmotionMusicPlayer:
         )
         self.load_camera_btn.pack(side="left", padx=10, pady=10)
 
+        # New "Load Music" button
+        self.load_music_btn = ttk.Button(
+            footer_frame,
+            text="Load Music",
+            command=self.load_music,
+            style="Flat.TButton"
+        )
+        self.load_music_btn.pack(side="left", padx=10, pady=10)
+
+        # Existing buttons
         self.detect_emotion_btn = ttk.Button(
             footer_frame,
             text="Detect Emotion",
             command=self.detect_emotion,
-            style="Flat.TButton"
+            style="Amethyst.TButton"
         )
         self.detect_emotion_btn.pack(side="left", padx=10, pady=10)
         self.detect_emotion_btn.config(state="disabled")
@@ -116,7 +126,7 @@ class WebcamEmotionMusicPlayer:
             footer_frame,
             text="Stop",
             command=self.stop_detection,
-            style="Flat.TButton"
+            style="Amethyst.TButton"
         )
         self.stop_btn.pack(side="left", padx=10, pady=10)
         self.stop_btn.config(state="disabled")
@@ -147,17 +157,26 @@ class WebcamEmotionMusicPlayer:
         )
         self.emotion_label.pack(side="right", padx=10, pady=10)
 
-        self.black_panel = tk.Frame(self.master, bg="#0F2326")
-        self.black_panel.pack(fill="both", expand=True)
+        self.parent_panel = tk.Frame(self.master, bg="#FFFFFF")
+        self.parent_panel.pack(fill="both", expand=True)
 
-        self.camera_label = tk.Label(self.black_panel, bg="black", borderwidth=0)
+        self.camera_label = tk.Label(self.parent_panel, bg="#FFFFFF", borderwidth=0)
         self.camera_label.pack(fill="both", expand=True)
 
         self.master.style = ttk.Style()
         self.master.style.theme_use("clam")
-        self.master.style.configure("Flat.TButton", background="#10ac84", foreground="white", font=("Helvetica", 12), borderwidth=0)
-        self.master.style.configure("IconButton.TButton", background="#3498db", foreground="white", font=("Helvetica", 12), borderwidth=0)
-        self.master.style.configure("Red.TButton", background="#ff6b6b", foreground="white", font=("Helvetica", 12), borderwidth=0)
+        self.master.style.configure("Flat.TButton", background="#10ac84", foreground="white", font=("Helvetica", 12),
+                                    borderwidth=0)
+        self.master.style.configure("Amethyst.TButton", background="#9B59B6", foreground="white", font=("Helvetica", 12),
+                                    borderwidth=0)
+        self.master.style.configure("IconButton.TButton", background="#3498db", foreground="white",
+                                    font=("Helvetica", 12), borderwidth=0)
+        self.master.style.configure("Red.TButton", background="#ff6b6b", foreground="white", font=("Helvetica", 12),
+                                    borderwidth=0)
+
+    def load_music(self):
+        # Implement loading music functionality here
+        pass
 
     def load_camera(self):
         devices = self.get_camera_devices()
