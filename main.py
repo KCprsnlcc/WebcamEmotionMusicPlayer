@@ -189,14 +189,21 @@ class WebcamEmotionMusicPlayer:
         dialog.configure(background="#1e272e")
         dialog.attributes("-topmost", True)
 
-        # Calculate the position to center the dialog window
+        # Remove the Windows buttons (minimize, maximize, close)
+        dialog.overrideredirect(True)
+
+        # Fix window size and make it non-resizable
         window_width = 940
         window_height = 600
+        dialog.geometry(f"{window_width}x{window_height}")
+        dialog.resizable(False, False)
+
+        # Calculate the position to center the dialog window
         screen_width = self.master.winfo_screenwidth()
         screen_height = self.master.winfo_screenheight()
         x = (screen_width - window_width) // 2
         y = (screen_height - window_height) // 2
-        dialog.geometry(f"{window_width}x{window_height}+{x}+{y}")
+        dialog.geometry(f"+{x}+{y}")
 
         # Create a frame to hold the header (emotion category)
         header_frame = tk.Frame(dialog, bg="#1e272e")
@@ -238,32 +245,40 @@ class WebcamEmotionMusicPlayer:
                 pygame.mixer.music.play(-1)  # Loop the music indefinitely
 
             # Function to delete the selected music file
-            def delete_music_file(music_file):
+            def delete_music_file(music_file, play_button):
                 music_file_path = os.path.join(music_folder, music_file)
+                if current_music == music_file_path:
+                    pygame.mixer.music.stop()  # Stop the music if it's currently playing
                 os.remove(music_file_path)
+                play_button.config(state="disabled")  # Disable the play button after deleting the file
                 # Reload the music files after deletion
                 load_emotion_music(emotion)
-
-            # Function to stop currently playing music
-            def stop_music():
-                pygame.mixer.music.stop()
 
             # Display music files with play, stop, and delete buttons
             for music_file in music_files:
                 label_frame = tk.Frame(music_container, bg="#1e272e")
                 label_frame.pack(fill="x")
+
+                # Music title label
                 label = ttk.Label(label_frame, text=music_file, font=("Helvetica", 12), background="#1e272e",
                                   foreground="white")
                 label.pack(side="left", padx=(10, 5), pady=5)
+
+                # Play button
                 play_button = ttk.Button(label_frame, text="Play",
                                          command=lambda file=music_file: play_music_file(file), style="Flat.TButton")
-                play_button.pack(side="left", padx=(5, 5), pady=5)
+                play_button.pack(side="right", padx=(5, 5), pady=5)
+
+                # Stop button
                 stop_button = ttk.Button(label_frame, text="Stop",
-                                         command=stop_music, style="Flat.TButton")
-                stop_button.pack(side="left", padx=(5, 5), pady=5)
+                                         command=lambda: pygame.mixer.music.stop(), style="Flat.TButton")
+                stop_button.pack(side="right", padx=(5, 5), pady=5)
+
+                # Delete button
                 delete_button = ttk.Button(label_frame, text="Delete",
-                                           command=lambda file=music_file: delete_music_file(file), style="Red.TButton")
-                delete_button.pack(side="left", padx=(5, 10), pady=5)
+                                           command=lambda file=music_file, play_button=play_button: delete_music_file(
+                                               file, play_button), style="Red.TButton")
+                delete_button.pack(side="right", padx=(5, 5), pady=5)
 
             # Update the canvas scroll region
             canvas.update_idletasks()
@@ -283,11 +298,33 @@ class WebcamEmotionMusicPlayer:
         footer_frame = tk.Frame(dialog, bg="#1e272e")
         footer_frame.pack(side="bottom", fill="x", padx=10, pady=10)
 
+        # Add "Upload Music" button
+        upload_button = ttk.Button(footer_frame, text="Upload Music", command=self.upload_music, style="Flat.TButton")
+        upload_button.pack(side="left", padx=10, pady=10)
+
+        # Add a label for uploading music files
+        upload_label = ttk.Label(footer_frame, text="Upload your music file (.mp3)", background="#1e272e",
+                                 foreground="white")
+        upload_label.pack(side="left", padx=10)
+
         # Add a close button to close the dialog window
         close_button = ttk.Button(footer_frame, text="Close", command=close_dialog, style="Red.TButton")
         close_button.pack(side="right", padx=10)
 
         dialog.mainloop()
+
+    def upload_music(self):
+        # Implement the functionality to upload music here
+        pass
+
+    def animate_title(self, label):
+        # Function to animate the music title label
+        text = label.cget("text")
+        while True:
+            text = text[1:] + text[0]
+            label.config(text=text)
+            label.update()
+            label.after(300)
 
     def load_camera(self):
         devices = self.get_camera_devices()

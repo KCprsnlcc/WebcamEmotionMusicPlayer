@@ -4,51 +4,133 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95012e8b-caa7-4bda-8a2b-3fc81eb852cd" name="Changes" comment="Resource Update">
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Pain.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Paint_Me_Silver.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Paint_The_Town_Red.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Pasilyo.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Patawarin.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Pauwi_Nako.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Pero.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Pinay_Na_Sobrang_Fine.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Pretty_Boy.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Psycho.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Sama-Sama.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Samahan_Mo_Ako.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Sana_-_Single_Version.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/panaginip.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Disgust/Time_After_Time.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Disgust/Time_Moves_Slow.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Disgust/Titig.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Fear/Take_Me_Where_Your_Heart_Is.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Fear/Tally.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Fear/Teka_Lang.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Happy/T_mame.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Happy/To_the_Bone.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Happy/Toxic.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Neutral/Snooze.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Neutral/Space_Song.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Neutral/Stargazing.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Sad/Selfless.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Sad/Seven__feat__Latto___Explicit_Ver__.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Sad/seasons.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Surprise/Sa_Ngalan_Ng_Pag-Ibig.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Surprise/Sa_Susunod_Na_Lang.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Surprise/Sa_Susunod_na_Habang_Buhay.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_05_2024_12_26_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_05_2024_12_26_AM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="95012e8b-caa7-4bda-8a2b-3fc81eb852cd" name="Changes" comment="Play, Stop and Delete Update">
+      <change afterPath="$PROJECT_DIR$/Music/Angry/Vibe_With_Me.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/WHO_CARES_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/Walang_Kapalit__AM_VER__.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/Watermelon_Sugar.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/Wavin__Flag.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/What_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/What_It_Is__Solo_Version_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/Who_s_That_Girl__feat__Eve_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/YK.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/YKWIM_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/You_Get_Me_So_High.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/Young.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/ZOOM.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/Zebbiana.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/welcome_and_goodbye.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Angry/worldstar_money__interlude_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/THAT_S_MY_BABY.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Tesselation.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/The_Nights.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/The_Perfect_Girl.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/The_Way_You_Look_At_Me.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Those_Eyes.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Tie_Me_Down.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Trip_Lang.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Uhaw__Tayong_Lahat_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Ulap.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Umaasa.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Unstoppable.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Urong_Sulong.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/Used_To_Be_Young.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/tila_tala.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Disgust/vampire.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Stereo_Hearts.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Still_Beating.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Sumayaw_Sumunod.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Sunrise.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Super_Freaky_Girl.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Super_Rich_Kids.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Super_Shy.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Sweet_Scar.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Swerte.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Tadhana.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/Television___So_Far_So_Good.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Fear/sun_and_moon.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/LWKY.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Love_Shot.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/MAPA.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/MOON.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Mabagal.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Magandang_Dilag.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Mahika.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Make_It_With_You.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Marcel.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Mari_Na_Sa_Bicol.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Maria_Hiwaga.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Marikit.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Mauli.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Me_and_Your_Mama.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Meet_Me_At_Our_Spot_-_Live.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Melting.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Money.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Mood__feat__iann_dior_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Happy/Moonlight_on_the_River.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/STAY__with_Justin_Bieber_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/Sanctuary.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/Shinunoga_E-Wa.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/Shut_up_My_Moms_Calling.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/Silver_Soul.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/Single_Soon.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/Small_Worlds.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/seaside_demo.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Imahe.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Inlove.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/International_Love__feat__Chris_Brown_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Into_Your_Arms__feat__Ava_Max_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Ivana.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Jealous.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Kahit_Ayaw_Mo_Na.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Kahit_Na_Tambay.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Katabi.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Kathang_Isip.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Kill_This_Love.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Kisame.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Kiss__Never_Let_Me_Go_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Kulang.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Kumpas_-_Theme_of__2_Good_2_Be_True_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/LDR_-_Sped_Up.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/LIMBO.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Lakas_Tama.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Landian.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Leave_The_Door_Open.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Leonora.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Line_Without_a_Hook.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Put_Your_Records_On.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Pwede_Ba.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Raining_In_Manila.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Rapstar.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Redbone.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Sa_Hindi_Pag-Alala.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Sad/Saan_.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/NIGHT_DANCER.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Nandyan_Agad_Ako.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Nangangamba.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Nobela.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Nonsense.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Notion.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Numb.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Oks_Lang.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Old_Love.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Pa-umaga.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Padaba.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Pagtingin.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/angry_music.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/disgust_music.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/fear_music.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/happy_music.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/neutral_music.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/sad_music.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/surprise_music.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Paint_The_Town_Red.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Pasilyo.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Patawarin.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Pauwi_Nako.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Pero.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Pinay_Na_Sobrang_Fine.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Pretty_Boy.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Psycho.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Sama-Sama.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Samahan_Mo_Ako.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/Sana_-_Single_Version.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Music/Angry/panaginip.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.spec" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,9 +211,9 @@
       <recent name="C:\Users\kcper\PycharmProjects\Face Emotion based Music Player\Music" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Machine Learning Projects\Face Emotion based Music Player\Music\Angry" />
-      <recent name="D:\Machine Learning Projects\Face Emotion based Music Player\Music\Surprise" />
       <recent name="D:\Machine Learning Projects\Face Emotion based Music Player\Music\Sad" />
+      <recent name="D:\Machine Learning Projects\Face Emotion based Music Player\Music\Happy" />
+      <recent name="D:\Machine Learning Projects\Face Emotion based Music Player\Music\Surprise" />
       <recent name="D:\Machine Learning Projects\Face Emotion based Music Player\Music\Neutral" />
       <recent name="D:\Machine Learning Projects\Face Emotion based Music Player\Music\Fear" />
     </key>
@@ -408,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715104339177</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Play, Stop and Delete Update">
+      <option name="closed" value="true" />
+      <created>1715223153702</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715223153702</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -433,6 +523,7 @@
     <MESSAGE value="Alpha build 1.0" />
     <MESSAGE value="Load Music Update" />
     <MESSAGE value="Resource Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Resource Update" />
+    <MESSAGE value="Play, Stop and Delete Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Play, Stop and Delete Update" />
   </component>
 </project>
