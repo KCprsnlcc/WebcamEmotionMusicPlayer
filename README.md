@@ -1,8 +1,11 @@
 # IN APP DEVELOPMENT
-
 ### Requirements:
 - Python 3.x installed on your system.
 - Necessary libraries installed: `tkinter`, `opencv-python`, `numpy`, `pygame`, `keras`, `PIL`.
+
+#### Additional Libraries for Music Management:
+- **pygame**: For playing and managing music files.
+- **os**: For file system operations such as copying and deleting music files.
 
 ### How to Use:
 
@@ -23,15 +26,27 @@
    - Based on the detected emotion, the application will play corresponding music.
    - Each emotion has its predefined music file stored in the "Music" folder.
 
-5. **Stop Detection:**
+5. **Load Music:**
+   - Click on the "Load Music" button to load music files corresponding to different emotions.
+   - Ensure that the music files are correctly labeled and stored in the "Music" folder.
+
+6. **Upload Music:**
+   - Click on the "Upload Music" button to add new music files to the "Music" folder.
+   - Select the music files from your system's file browser and click "Open" to upload them.
+
+7. **Delete Music:**
+   - Select the music file you want to delete from the list of loaded music files.
+   - Click on the "Delete Music" button to remove the selected music file from the "Music" folder.
+
+8. **Stop Detection:**
    - Click on the "Stop" button to pause the emotion detection process.
 
-6. **Toggle Full Screen:**
+9. **Toggle Full Screen:**
    - Click on the "Full Screen" button to switch between full-screen and windowed mode.
 
-7. **Exit Application:**
-   - Click on the "Exit" button to close the application.
-   - Ensure to stop emotion detection before exiting to release the camera resources.
+10. **Exit Application:**
+    - Click on the "Exit" button to close the application.
+    - Ensure to stop emotion detection before exiting to release the camera resources.
 
 ### Notes:
 - Ensure that the required emotion detection model (`modelv1.h5`) is present in the specified location.
@@ -51,45 +66,27 @@
 - **PIL**: Python Imaging Library for image processing.
 
 ### Functions and Classes:
-1. **`play_music(emotion)`**: Function to play music based on detected emotion.
-2. **`CameraDeviceDialog`**: A dialog class for choosing a camera device.
-    - **Attributes**:
-        - `devices`: List of available camera devices.
-        - `selected_device`: Variable to store the selected camera device.
-        - `close_clicked`: Flag indicating if the close button was clicked.
-        - `select_clicked`: Flag indicating if the select button was clicked.
-    - **Methods**:
-        - `create_widgets()`: Create GUI elements.
-        - `close_and_exit()`: Close the dialog and exit.
-        - `select_device()`: Select the camera device.
-        - `get_camera_devices()`: Retrieve available camera devices.
-3. **`WebcamEmotionMusicPlayer`**: Main class for the application.
-    - **Attributes**:
-        - `camera`: Camera object.
-        - `camera_id`: ID of the selected camera device.
-        - `emotion_thread`: Thread for emotion detection.
-        - `run_emotion_detection`: Flag indicating if emotion detection is running.
-        - `emotion_label_text`: Variable to store the detected emotion.
-    - **Methods**:
-        - `create_widgets()`: Create GUI elements.
-        - `load_camera()`: Load the selected camera device.
-        - `get_camera_devices()`: Retrieve available camera devices.
-        - `show_camera()`: Display camera feed.
-        - `show_notification(message)`: Display a notification.
-        - `resize_frame(frame)`: Resize the camera frame.
-        - `update_camera()`: Update the camera feed.
-        - `detect_emotion()`: Start emotion detection.
-        - `detect_emotion_process()`: Process emotion detection.
-        - `stop_detection()`: Stop emotion detection.
-        - `toggle_fullscreen()`: Toggle fullscreen mode.
-        - `exit_application()`: Exit the application.
-4. **`detect_emotion(frame)`**: Function to detect emotion in a frame.
 
-### Buttons and Interfaces:
-- **Load Camera Button**: Load the selected camera device.
-- **Detect Emotion Button**: Start emotion detection.
-- **Stop Button**: Stop emotion detection.
-- **Full Screen Button**: Toggle fullscreen mode.
-- **Exit Button**: Exit the application.
+1. **`load_music()`**: 
+    - Function to load music files corresponding to different emotions from the "Music" folder.
+    - This function can be called when the application starts or when the "Load Music" button is clicked.
 
-The program captures emotions through the webcam, detects them using a pre-trained model, and plays music accordingly. It provides a GUI interface for user interaction.
+2. **`upload_music()`**:
+    - Function to upload new music files to the "Music" folder.
+    - This function can be triggered when the "Upload Music" button is clicked.
+    - It should open a file dialog to allow the user to select one or more music files from their system.
+    - Once selected, the function should copy the chosen music files to the "Music" folder.
+
+3. **`delete_music(file_name)`**:
+    - Function to delete a specific music file from the "Music" folder.
+    - This function can be called when the "Delete Music" button is clicked and a music file is selected from the list.
+    - It should remove the selected music file from the "Music" folder.
+
+4. **`MusicController`**:
+    - Class to handle music-related operations such as loading, uploading, and deleting music files.
+    - It can have methods like `load_music`, `upload_music`, and `delete_music`.
+
+5. **`GUI`** (or any main application class):
+    - Modify the existing GUI class or create a new one to include buttons for loading, uploading, and deleting music files.
+    - Bind these buttons to the corresponding functions in the `MusicController`.
+
