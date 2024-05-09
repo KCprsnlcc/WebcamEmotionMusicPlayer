@@ -4,29 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95012e8b-caa7-4bda-8a2b-3fc81eb852cd" name="Changes" comment="Music Fetched in Load Music">
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Ako_Naman_Muna.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Angry/Ang_Pag-ibig.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Music/Surprise/Always.mp3" afterDir="false" />
+    <list default="true" id="95012e8b-caa7-4bda-8a2b-3fc81eb852cd" name="Changes" comment="Category Chooser Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Pain.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Paint_Me_Silver.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Vibe_With_Me.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/WHO_CARES_.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Walang_Kapalit__AM_VER__.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Watermelon_Sugar.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Wavin__Flag.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/What_.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/What_It_Is__Solo_Version_.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Who_s_That_Girl__feat__Eve_.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/YK.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/YKWIM_.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/You_Get_Me_So_High.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Young.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/ZOOM.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/Zebbiana.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/welcome_and_goodbye.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Music/Angry/worldstar_money__interlude_.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -403,7 +382,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715227237512</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Category Chooser Update">
+      <option name="closed" value="true" />
+      <created>1715231167206</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1715231167206</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -430,6 +417,7 @@
     <MESSAGE value="Resource Update" />
     <MESSAGE value="Play, Stop and Delete Update" />
     <MESSAGE value="Music Fetched in Load Music" />
-    <option name="LAST_COMMIT_MESSAGE" value="Music Fetched in Load Music" />
+    <MESSAGE value="Category Chooser Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Category Chooser Update" />
   </component>
 </project>

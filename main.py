@@ -376,6 +376,7 @@ class WebcamEmotionMusicPlayer:
             label.update()
             label.after(300)
 
+
     def load_camera(self):
         devices = self.get_camera_devices()
         if devices:
