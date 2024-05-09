@@ -367,6 +367,10 @@ class WebcamEmotionMusicPlayer:
             # Move the uploaded file to the destination folder
             shutil.move(file_path, dest_folder)
 
+            # Show a notification message
+            message = f"File uploaded to the '{emotion}' category."
+            self.show_notification(message)
+
     def animate_title(self, label):
         # Function to animate the music title label
         text = label.cget("text")

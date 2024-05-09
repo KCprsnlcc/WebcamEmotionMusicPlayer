@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95012e8b-caa7-4bda-8a2b-3fc81eb852cd" name="Changes" comment="Category Chooser Update">
+      <change afterPath="$PROJECT_DIR$/Music/Neutral/At_My_Worst.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/Angels_Like_You.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music/Surprise/As_It_Was.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -390,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715231167206</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Category Chooser Update">
+      <option name="closed" value="true" />
+      <created>1715232819936</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1715232819936</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
