@@ -7,6 +7,8 @@ from keras.models import load_model
 import os
 import random
 import threading
+import shutil
+from tkinter import filedialog
 from PIL import Image, ImageTk
 
 # Load the pre-trained face detection and emotion recognition models
@@ -305,7 +307,7 @@ class WebcamEmotionMusicPlayer:
         # Add a label for uploading music files
         upload_label = ttk.Label(footer_frame, text="Upload your music file (.mp3)", background="#1e272e",
                                  foreground="white")
-        upload_label.pack(side="left", padx=10)
+        upload_label.pack(side="left", padx=5, pady=5)
 
         # Add a close button to close the dialog window
         close_button = ttk.Button(footer_frame, text="Close", command=close_dialog, style="Red.TButton")
@@ -314,8 +316,56 @@ class WebcamEmotionMusicPlayer:
         dialog.mainloop()
 
     def upload_music(self):
-        # Implement the functionality to upload music here
-        pass
+        # Create and configure the dialog window
+        upload_dialog = tk.Toplevel(self.master)
+        upload_dialog.title("Upload Music")
+        upload_dialog.configure(background="#1e272e")
+        upload_dialog.attributes("-topmost", True)
+        upload_dialog.overrideredirect(True)
+
+        # Fix window size and make it non-resizable
+        window_width = 180
+        window_height = 380
+        upload_dialog.geometry(f"{window_width}x{window_height}")
+        upload_dialog.resizable(False, False)
+
+        # Calculate the position to center the dialog window
+        screen_width = self.master.winfo_screenwidth()
+        screen_height = self.master.winfo_screenheight()
+        x = (screen_width - window_width) // 2
+        y = (screen_height - window_height) // 2
+        upload_dialog.geometry(f"+{x}+{y}")
+
+        # Add a label for choosing category
+        category_label = ttk.Label(upload_dialog, text="Choose Category", background="#1e272e", foreground="white",
+                                   font=("Helvetica", 12))
+        category_label.pack(pady=10)
+
+        # Create buttons for each emotion category
+        emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
+        for emotion in emotions:
+            ttk.Button(upload_dialog, text=emotion, command=lambda emo=emotion: self.upload_to_emotion_category(emo),
+                       style="Flat.TButton").pack(padx=5, pady=5)
+
+        # Function to close the dialog window
+        def close_upload_dialog():
+            upload_dialog.destroy()
+
+        # Add a close button to close the dialog window
+        close_button = ttk.Button(upload_dialog, text="Close", command=close_upload_dialog, style="Red.TButton")
+        close_button.pack(padx=5, pady=5)
+
+        # Ensure file chooser dialog stays in front
+        upload_dialog.focus_force()
+
+    def upload_to_emotion_category(self, emotion):
+        # Function to handle music file upload to a specific emotion category
+        file_path = filedialog.askopenfilename(filetypes=[("MP3 files", "*.mp3")])
+        if file_path:
+            # Define the destination folder based on the selected emotion
+            dest_folder = os.path.join("Music", emotion)
+            # Move the uploaded file to the destination folder
+            shutil.move(file_path, dest_folder)
 
     def animate_title(self, label):
         # Function to animate the music title label
