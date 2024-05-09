@@ -5,6 +5,7 @@ import numpy as np
 import pygame
 from keras.models import load_model
 import os
+import random
 import threading
 from PIL import Image, ImageTk
 
@@ -24,26 +25,33 @@ def play_music(emotion):
 
     music_folder = "Music"
     music_files = {
-        'angry': 'angry_music.mp3',
-        'disgust': 'disgust_music.mp3',
-        'fear': 'fear_music.mp3',
-        'happy': 'happy_music.mp3',
-        'neutral': 'neutral_music.mp3',
-        'sad': 'sad_music.mp3',
-        'surprise': 'surprise_music.mp3'
+        'angry': 'Angry',
+        'disgust': 'Disgust',
+        'fear': 'Fear',
+        'happy': 'Happy',
+        'neutral': 'Neutral',
+        'sad': 'Sad',
+        'surprise': 'Surprise'
     }
 
     if emotion in music_files:
-        music_path = os.path.join(music_folder, music_files[emotion])
+        folder_name = music_files[emotion]
+        music_path = os.path.join(music_folder, folder_name)
+        music_list = os.listdir(music_path)
 
-        # Check if a music is currently playing
-        if current_music is not None and current_music != music_path:
-            pygame.mixer.music.stop()  # Stop currently playing music
+        if music_list:
+            # Select a random music file from the folder
+            music_file = random.choice(music_list)
+            music_file_path = os.path.join(music_path, music_file)
 
-        if current_music != music_path:
-            pygame.mixer.music.load(music_path)
-            pygame.mixer.music.play(-1)  # Loop the music indefinitely
-            current_music = music_path  # Update currently playing music path
+            # Check if a music is currently playing
+            if current_music is not None and current_music != music_file_path:
+                pygame.mixer.music.stop()  # Stop currently playing music
+
+            if current_music != music_file_path:
+                pygame.mixer.music.load(music_file_path)
+                pygame.mixer.music.play(-1)  # Loop the music indefinitely
+                current_music = music_file_path  # Update currently playing music path
 
 
 class WebcamEmotionMusicPlayer:
@@ -175,8 +183,111 @@ class WebcamEmotionMusicPlayer:
                                     borderwidth=0)
 
     def load_music(self):
-        # Implement loading music functionality here
-        pass
+        # Create and configure the dialog
+        dialog = tk.Toplevel(self.master)
+        dialog.title("Load Music")
+        dialog.configure(background="#1e272e")
+        dialog.attributes("-topmost", True)
+
+        # Calculate the position to center the dialog window
+        window_width = 940
+        window_height = 600
+        screen_width = self.master.winfo_screenwidth()
+        screen_height = self.master.winfo_screenheight()
+        x = (screen_width - window_width) // 2
+        y = (screen_height - window_height) // 2
+        dialog.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+        # Create a frame to hold the header (emotion category)
+        header_frame = tk.Frame(dialog, bg="#1e272e")
+        header_frame.pack(side="top", fill="x", padx=10, pady=10)
+
+        # Create a frame to hold the music files for the selected emotion
+        music_frame = tk.Frame(dialog, bg="#1e272e")
+        music_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        # Create a scrollbar for the music frame
+        scrollbar = ttk.Scrollbar(music_frame, orient="vertical")
+        scrollbar.pack(side="right", fill="y")
+
+        # Create a canvas to hold the music labels
+        canvas = tk.Canvas(music_frame, bg="#1e272e", yscrollcommand=scrollbar.set)
+        canvas.pack(side="left", fill="both", expand=True)
+
+        # Configure the scrollbar to scroll the canvas
+        scrollbar.config(command=canvas.yview)
+
+        # Create a frame inside the canvas to hold the music labels
+        music_container = tk.Frame(canvas, bg="#1e272e")
+        canvas.create_window((0, 0), window=music_container, anchor="nw")
+
+        # Function to load music files for a specific emotion category
+        def load_emotion_music(emotion):
+            # Clear the music frame
+            for widget in music_container.winfo_children():
+                widget.destroy()
+
+            # Fetch music files in the emotion folder
+            music_folder = os.path.join("Music", emotion.lower())
+            music_files = [file for file in os.listdir(music_folder) if file.endswith(".mp3")]
+
+            # Function to play the selected music file
+            def play_music_file(music_file):
+                music_file_path = os.path.join(music_folder, music_file)
+                pygame.mixer.music.load(music_file_path)
+                pygame.mixer.music.play(-1)  # Loop the music indefinitely
+
+            # Function to delete the selected music file
+            def delete_music_file(music_file):
+                music_file_path = os.path.join(music_folder, music_file)
+                os.remove(music_file_path)
+                # Reload the music files after deletion
+                load_emotion_music(emotion)
+
+            # Function to stop currently playing music
+            def stop_music():
+                pygame.mixer.music.stop()
+
+            # Display music files with play, stop, and delete buttons
+            for music_file in music_files:
+                label_frame = tk.Frame(music_container, bg="#1e272e")
+                label_frame.pack(fill="x")
+                label = ttk.Label(label_frame, text=music_file, font=("Helvetica", 12), background="#1e272e",
+                                  foreground="white")
+                label.pack(side="left", padx=(10, 5), pady=5)
+                play_button = ttk.Button(label_frame, text="Play",
+                                         command=lambda file=music_file: play_music_file(file), style="Flat.TButton")
+                play_button.pack(side="left", padx=(5, 5), pady=5)
+                stop_button = ttk.Button(label_frame, text="Stop",
+                                         command=stop_music, style="Flat.TButton")
+                stop_button.pack(side="left", padx=(5, 5), pady=5)
+                delete_button = ttk.Button(label_frame, text="Delete",
+                                           command=lambda file=music_file: delete_music_file(file), style="Red.TButton")
+                delete_button.pack(side="left", padx=(5, 10), pady=5)
+
+            # Update the canvas scroll region
+            canvas.update_idletasks()
+            canvas.config(scrollregion=canvas.bbox("all"))
+
+        # Create buttons for each emotion category
+        emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
+        for emotion in emotions:
+            ttk.Button(header_frame, text=emotion, command=lambda emo=emotion: load_emotion_music(emo),
+                       style="Flat.TButton").pack(side="left", padx=10)
+
+        # Function to close the dialog window
+        def close_dialog():
+            dialog.destroy()
+
+        # Create a frame to hold the footer (close button)
+        footer_frame = tk.Frame(dialog, bg="#1e272e")
+        footer_frame.pack(side="bottom", fill="x", padx=10, pady=10)
+
+        # Add a close button to close the dialog window
+        close_button = ttk.Button(footer_frame, text="Close", command=close_dialog, style="Red.TButton")
+        close_button.pack(side="right", padx=10)
+
+        dialog.mainloop()
 
     def load_camera(self):
         devices = self.get_camera_devices()
@@ -460,5 +571,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
