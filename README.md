@@ -1,4 +1,4 @@
-# IN APP DEVELOPMENT
+# Be king, we're still in Beta.
 ### Requirements:
 - Python 3.x installed on your system.
 - Necessary libraries installed: `tkinter`, `opencv-python`, `numpy`, `pygame`, `keras`, `PIL`.
