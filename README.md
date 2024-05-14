@@ -1,4 +1,4 @@
-# Be king, we're still in Beta.
+# BE KIND WE ARE STILL IN BETA
 ### Requirements:
 - Python 3.x installed on your system.
 - Necessary libraries installed: `tkinter`, `opencv-python`, `numpy`, `pygame`, `keras`, `PIL`.
