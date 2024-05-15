@@ -10,10 +10,28 @@ import threading
 import shutil
 from tkinter import filedialog
 from PIL import Image, ImageTk
+import time
+import sys
 
-# Load the pre-trained face detection and emotion recognition models
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-emotion_model = load_model('Model/modelv1.h5')  # Update model path
+
+# Get the base path for bundled files
+if getattr(sys, 'frozen', False):
+    # Running as bundled executable
+    base_path = sys._MEIPASS
+else:
+    # Running in a normal Python environment
+    base_path = os.path.abspath(".")
+
+# Dynamically determine the base path of the script
+base_path = os.path.dirname(os.path.abspath(__file__))
+
+# Load Haarcascade XML file for face detection
+xml_file_path = os.path.join(base_path, 'Misc', 'haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier(xml_file_path)
+
+# Load emotion model
+emotion_model_path = os.path.join(base_path, "Model", "70PCT.h5")
+emotion_model = load_model(emotion_model_path)
 
 # Initialize Pygame mixer
 pygame.mixer.init()
@@ -25,15 +43,16 @@ current_music = None
 def play_music(emotion):
     global current_music
 
-    music_folder = "Music"
+    # Define music folder based on emotion
+    music_folder = os.path.join(base_path, 'Music', emotion)
     music_files = {
-        'angry': 'Angry',
-        'disgust': 'Disgust',
-        'fear': 'Fear',
-        'happy': 'Happy',
-        'neutral': 'Neutral',
-        'sad': 'Sad',
-        'surprise': 'Surprise'
+        'angry': os.path.join(base_path, 'Music', 'Angry'),
+        'disgust': os.path.join(base_path, 'Music', 'Disgust'),
+        'fear': os.path.join(base_path, 'Music', 'Fear'),
+        'happy': os.path.join(base_path, 'Music', 'Happy'),
+        'neutral': os.path.join(base_path, 'Music', 'Neutral'),
+        'sad': os.path.join(base_path, 'Music', 'Sad'),
+        'surprise': os.path.join(base_path, 'Music', 'Surprise')
     }
 
     if emotion in music_files:
@@ -42,7 +61,6 @@ def play_music(emotion):
         music_list = os.listdir(music_path)
 
         if music_list:
-            # Select a random music file from the folder
             music_file = random.choice(music_list)
             music_file_path = os.path.join(music_path, music_file)
 
@@ -75,7 +93,16 @@ class WebcamEmotionMusicPlayer:
         header_frame = tk.Frame(self.master, bg="#1e272e")
         header_frame.pack(side="top", fill="x")
 
-        logo_img = Image.open("Resources/logo.png")
+        # Get the base path for bundled files
+        if getattr(sys, 'frozen', False):
+            # Running as bundled executable
+            base_path = sys._MEIPASS
+        else:
+            # Running in a normal Python environment
+            base_path = os.path.abspath(".")
+
+        logo_path = os.path.join(base_path, "Resources", "logo.png")
+        logo_img = Image.open(logo_path)
         logo_img = logo_img.resize((100, 100))
         self.logo = ImageTk.PhotoImage(logo_img)
         logo_label = tk.Label(header_frame, image=self.logo, bg="#1e272e")
@@ -237,7 +264,7 @@ class WebcamEmotionMusicPlayer:
                 widget.destroy()
 
             # Fetch music files in the emotion folder
-            music_folder = os.path.join("Music", emotion.lower())
+            music_folder = os.path.join(base_path, "Music", emotion.lower())
             music_files = [file for file in os.listdir(music_folder) if file.endswith(".mp3")]
 
             # Function to play the selected music file
@@ -286,9 +313,13 @@ class WebcamEmotionMusicPlayer:
             canvas.update_idletasks()
             canvas.config(scrollregion=canvas.bbox("all"))
 
+        # Define the relative path to the emotion categories directory
+        emotion_categories_path = os.path.join("Music")
+
         # Create buttons for each emotion category
         emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
         for emotion in emotions:
+            folder_path = os.path.join(emotion_categories_path, emotion.lower())
             ttk.Button(header_frame, text=emotion, command=lambda emo=emotion: load_emotion_music(emo),
                        style="Flat.TButton").pack(side="left", padx=10)
 
@@ -341,10 +372,35 @@ class WebcamEmotionMusicPlayer:
                                    font=("Helvetica", 12))
         category_label.pack(pady=10)
 
-        # Create buttons for each emotion category
+        # Define the relative path to the emotion categories directory
+        emotion_categories_path = os.path.join("Music")
+
+        # Function to handle music file upload to a specific emotion category
+        def upload_to_emotion_category(emotion):
+            file_paths = filedialog.askopenfilenames(filetypes=[("MP3 files", "*.mp3")])
+            if file_paths:
+                # Define the destination folder based on the selected emotion
+                dest_folder = os.path.join(base_path, "Music", emotion.lower())
+                for file_path in file_paths:
+                    # Move the uploaded file to the destination folder
+                    try:
+                        shutil.move(file_path, dest_folder)
+                    except FileNotFoundError:
+                        # Handle the case where the destination folder doesn't exist
+                        os.makedirs(dest_folder)  # Create the destination folder
+                        shutil.move(file_path, dest_folder)  # Move the file again
+                # Show a notification message
+                message = f"{len(file_paths)} files uploaded to the '{emotion}' category."
+                self.show_notification(message)
+
+        emotion_categories_path2 = os.path.join("Music")
+
+        # Create buttons for each emotion category to upload multiple files
         emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
         for emotion in emotions:
-            ttk.Button(upload_dialog, text=emotion, command=lambda emo=emotion: self.upload_to_emotion_category(emo),
+            folder_path = os.path.join(emotion_categories_path2, emotion.lower())
+            ttk.Button(upload_dialog, text=f"{emotion}",
+                       command=lambda emo=emotion: upload_to_emotion_category(emo),
                        style="Flat.TButton").pack(padx=5, pady=5)
 
         # Function to close the dialog window
@@ -358,18 +414,7 @@ class WebcamEmotionMusicPlayer:
         # Ensure file chooser dialog stays in front
         upload_dialog.focus_force()
 
-    def upload_to_emotion_category(self, emotion):
-        # Function to handle music file upload to a specific emotion category
-        file_path = filedialog.askopenfilename(filetypes=[("MP3 files", "*.mp3")])
-        if file_path:
-            # Define the destination folder based on the selected emotion
-            dest_folder = os.path.join("Music", emotion)
-            # Move the uploaded file to the destination folder
-            shutil.move(file_path, dest_folder)
-
-            # Show a notification message
-            message = f"File uploaded to the '{emotion}' category."
-            self.show_notification(message)
+        upload_dialog.mainloop()
 
     def animate_title(self, label):
         # Function to animate the music title label
@@ -379,7 +424,6 @@ class WebcamEmotionMusicPlayer:
             label.config(text=text)
             label.update()
             label.after(300)
-
 
     def load_camera(self):
         devices = self.get_camera_devices()
@@ -396,21 +440,29 @@ class WebcamEmotionMusicPlayer:
 
             if dialog.select_clicked:
                 selected_device = dialog.selected_device.get()
-                self.camera_id = int(selected_device.split()[1])
-                self.camera = cv2.VideoCapture(self.camera_id)
-                self.show_camera()
-                if dialog.close_clicked:
-                    self.hide_notification()
-                else:
-                    self.show_notification("Camera is now loaded successfully!")
+                try:
+                    self.camera_id = int(selected_device.split()[1])
+                    self.camera = cv2.VideoCapture(self.camera_id)
+                    self.show_camera()
+                    if dialog.close_clicked:
+                        self.hide_notification()
+                    else:
+                        self.show_notification("Camera is now loaded successfully!")
+                except Exception as e:
+                    self.show_notification(f"Error loading camera: {str(e)}")
+        else:
+            self.show_notification2("No camera devices are installed properly.")
 
     def get_camera_devices(self):
         devices = []
-        for i in range(10):
-            cap = cv2.VideoCapture(i)
-            if cap.isOpened():
-                devices.append(f"Camera {i}")
-                cap.release()
+        try:
+            for i in range(10):
+                cap = cv2.VideoCapture(i)
+                if cap.isOpened():
+                    devices.append(f"Camera {i}")
+                    cap.release()
+        except Exception as e:
+            self.show_notification(str(e))
         return devices
 
     def show_camera(self):
@@ -438,7 +490,44 @@ class WebcamEmotionMusicPlayer:
         notification_window = tk.Toplevel(self.master)
         notification_window.title("Notification")
         notification_window.configure(background="#1e272e")
-        window_width = 300
+        window_width = 400
+        window_height = 100
+        screen_width = self.master.winfo_screenwidth()
+        screen_height = self.master.winfo_screenheight()
+        x = (screen_width - window_width) // 2
+        y = (screen_height - window_height) // 2
+        notification_window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+        notification_window.resizable(False, False)
+        notification_window.attributes("-topmost", True)
+        notification_window.overrideredirect(True)
+        notification_frame = tk.Frame(notification_window, bg="#1e272e")
+        notification_frame.pack(fill="both", expand=True)
+        message_label = ttk.Label(
+            notification_frame,
+            text=message,
+            font=("Helvetica", 12),
+            foreground="white",
+            background="#1e272e"
+        )
+        message_label.pack(padx=10, pady=10)
+        close_button = ttk.Button(
+            notification_frame,
+            text="Close",
+            command=notification_window.destroy,
+            style="Flat.TButton"
+        )
+        close_button.pack(padx=10, pady=10)
+        style = ttk.Style(notification_window)
+        style.theme_use("clam")
+        style.configure("Toplevel", background="#1e272e")
+        style.configure("TLabel", background="#1e272e", foreground="white")
+        style.configure("Flat.TButton", background="#10ac84", foreground="white", font=("Helvetica", 12), borderwidth=0)
+
+    def show_notification2(self, message):
+        notification_window = tk.Toplevel(self.master)
+        notification_window.title("Notification")
+        notification_window.configure(background="#1e272e")
+        window_width = 350
         window_height = 100
         screen_width = self.master.winfo_screenwidth()
         screen_height = self.master.winfo_screenheight()
@@ -486,6 +575,9 @@ class WebcamEmotionMusicPlayer:
         ret, frame = self.camera.read()
         if ret:
             frame = self.resize_frame(frame)
+            if self.run_emotion_detection:
+                frame, emotion = detect_emotion(frame)
+                self.emotion_label_text.set(f"Emotion = {emotion.capitalize()}")
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             img = Image.fromarray(frame)
             img = ImageTk.PhotoImage(image=img)
@@ -496,10 +588,11 @@ class WebcamEmotionMusicPlayer:
     def detect_emotion(self):
         self.detect_emotion_btn.config(state="disabled")
         self.stop_btn.config(state="normal")
-        self.run_emotion_detection = True  # Set flag to indicate emotion detection is running
+        self.run_emotion_detection = True
         self.emotion_thread = threading.Thread(target=self.detect_emotion_process)
         self.emotion_thread.start()
 
+    # Modify detect_emotion_process function
     def detect_emotion_process(self):
         while self.run_emotion_detection:
             ret, frame = self.camera.read()
@@ -507,6 +600,15 @@ class WebcamEmotionMusicPlayer:
                 frame = self.resize_frame(frame)
                 frame, emotion = detect_emotion(frame)
                 self.emotion_label_text.set(f"Emotion = {emotion.capitalize()}")
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                img = Image.fromarray(frame)
+                img = ImageTk.PhotoImage(image=img)
+                self.camera_label.img = img
+                self.camera_label.config(image=img)
+                time.sleep(3)
+            else:
+                self.stop_detection()
+
 
     def stop_detection(self):
         self.run_emotion_detection = False  # Set flag to stop emotion detection
@@ -555,13 +657,17 @@ def detect_emotion(frame):
                 play_music(predicted_emotion_label)
 
                 # Draw rectangle around the face and display the emotion label
-                cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-                cv2.putText(frame, predicted_emotion_label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (46, 39, 30), 2)
+                cv2.putText(frame, predicted_emotion_label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 255, 255), 2)
 
                 return frame, predicted_emotion_label
 
     return frame, "None"
 
+def resize_frame(self, frame):
+    # Resize the frame to a smaller size
+    resized_frame = cv2.resize(frame, (640, 480))  # Adjust the dimensions as needed
+    return resized_frame
 class CameraDeviceDialog(tk.Toplevel):
     def __init__(self, master, devices):
         super().__init__(master)
@@ -572,6 +678,9 @@ class CameraDeviceDialog(tk.Toplevel):
 
         self.selected_device = tk.StringVar()
         self.selected_device.set(self.devices[0])
+
+        # Set background color to #1e272e
+        self.configure(background="#1e272e")
 
         self.create_widgets()
 
