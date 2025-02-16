@@ -111,8 +111,4 @@ Welcome to our Emotion Detection and Music Player application! 🎵 This applica
 
 ---
 
-![Camera](https://img.icons8.com/ios-filled/50/000000/camera--v1.png) ![Music](https://img.icons8.com/ios-filled/50/000000/music.png) ![Upload](https://img.icons8.com/ios-filled/50/000000/upload.png) ![Delete](https://img.icons8.com/ios-filled/50/000000/delete.png) ![FullScreen](https://img.icons8.com/ios-filled/50/000000/full-screen.png) ![Exit](https://img.icons8.com/ios-filled/50/000000/exit.png)
-
----
-
 Thank you for trying our application! Your feedback is valuable to us. 🧡
